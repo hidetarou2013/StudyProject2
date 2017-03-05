@@ -82,8 +82,54 @@ export class AppComponent {
        })
      });
 
+     // 3/3に設計したテーブル定義では、以下のようなデータが飛んでくるはず。
+     // 階層順位のカラムには、フラグを入れるべきか、その階層における順位を入れるべきか悩む。
+     // totalOrder は移動や挿入の際にしょっちゅう入れ替わる値となる。→そもそもこれを保持しないといけないのか？
+     let labelArr2 = [
+        {"parentLabelCode": "00000000","labelCode": "00000001","labelName": "A","totalOrder": "1","lev1": "1","lev2": "0","lev3": "0","lev4": "0","lev5": "0"}
+       ,{"parentLabelCode": "00000001","labelCode": "00000002","labelName": "A-1","totalOrder": "2","lev1": "0","lev2": "1","lev3": "0","lev4": "0","lev5": "0"}
+       ,{"parentLabelCode": "00000001","labelCode": "00000003","labelName": "A-2","totalOrder": "3","lev1": "0","lev2": "2","lev3": "0","lev4": "0","lev5": "0"}
+       ,{"parentLabelCode": "00000000","labelCode": "00000004","labelName": "B","totalOrder": "4","lev1": "2","lev2": "0","lev3": "0","lev4": "0","lev5": "0"}
+       ,{"parentLabelCode": "00000004","labelCode": "00000005","labelName": "B-1","totalOrder": "5","lev1": "0","lev2": "1","lev3": "0","lev4": "0","lev5": "0"}
+       ,{"parentLabelCode": "00000004","labelCode": "00000006","labelName": "B-2","totalOrder": "6","lev1": "0","lev2": "2","lev3": "0","lev4": "0","lev5": "0"}
+       ,{"parentLabelCode": "00000006","labelCode": "00000007","labelName": "B-2-1","totalOrder": "7","lev1": "0","lev2": "0","lev3": "1","lev4": "0","lev5": "0"}
+       ,{"parentLabelCode": "00000000","labelCode": "00000008","labelName": "C","totalOrder": "8","lev1": "3","lev2": "0","lev3": "0","lev4": "0","lev5": "0"}
+       ];
 
+    // 第一階層だけ抽出
+    var totalIndex2 = 0;
+    var lev1List = _.filter(labelArr2,["parentLabelCode","00000000"]);
+    _.forEach(lev1List, function(e) {
+     totalIndex2++;
+     console.log("" + totalIndex2 + "|" + e.labelName + ":" + e.totalOrder);
+    });
 
+    // 第一回層以外だけ抽出
+    totalIndex2 = 0;
+    var lev2List = _.differenceBy(labelArr2,[{"parentLabelCode":"00000000"}],"parentLabelCode");
+    _.forEach(lev2List, function(e) {
+      totalIndex2++;
+      console.log("" + totalIndex2 + "|" + e.labelName + ":" + e.totalOrder);
+
+    });
+
+    // 第二回層だけ抽出
+    totalIndex2 = 0;
+    var lev2List2 = _.differenceBy(labelArr2,[{"lev2":"0"}],"lev2");
+    _.forEach(lev2List2, function(e) {
+      totalIndex2++;
+      console.log("" + totalIndex2 + "|" + e.labelName + ":" + e.totalOrder);
+
+    });
+
+    // 第三回層だけ抽出
+    totalIndex2 = 0;
+    var lev3List = _.differenceBy(labelArr2,[{"lev3":"0"}],"lev3");
+    _.forEach(lev3List, function(e) {
+      totalIndex2++;
+      console.log("" + totalIndex2 + "|" + e.labelName + ":" + e.totalOrder);
+
+    });
 
   }
 
