@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { enableProdMode } from '@angular/core';
 import * as _ from "lodash";
+import * as Collections from 'typescript-collections';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,8 @@ import * as _ from "lodash";
 })
 export class AppComponent {
   title = 'app works!';
+
+
 
   method1() :void{
     console.log('lodash version:', _.VERSION);
@@ -94,7 +97,7 @@ export class AppComponent {
        ,{"parentLabelCode": "00000004","labelCode": "00000006","labelName": "B-2","totalOrder": "6","lev1": "0","lev2": "2","lev3": "0","lev4": "0","lev5": "0"}
        ,{"parentLabelCode": "00000006","labelCode": "00000007","labelName": "B-2-1","totalOrder": "7","lev1": "0","lev2": "0","lev3": "1","lev4": "0","lev5": "0"}
        ,{"parentLabelCode": "00000000","labelCode": "00000008","labelName": "C","totalOrder": "8","lev1": "3","lev2": "0","lev3": "0","lev4": "0","lev5": "0"}
-       ];
+     ];
 
     // 第一階層だけ抽出
     var totalIndex2 = 0;
@@ -115,11 +118,29 @@ export class AppComponent {
 
     // 第二回層だけ抽出
     totalIndex2 = 0;
-    var lev2List2 = _.differenceBy(labelArr2,[{"lev2":"0"}],"lev2");
+    let lev2List2 = _.differenceBy(labelArr2,[{"lev2":"0"}],"lev2");
+    let mySetA = new Collections.Set<String>();
+    let mySetB = new Collections.Set<String>();
     _.forEach(lev2List2, function(e) {
       totalIndex2++;
       console.log("" + totalIndex2 + "|" + e.labelName + ":" + e.totalOrder);
+      // A,B 分けて格納
+      if(e.parentLabelCode === "00000001"){
+        mySetA.add(e.labelName + ":" + e.totalOrder);
+      }
 
+      if(e.parentLabelCode === "00000004"){
+        mySetB.add(e.labelName + ":" + e.totalOrder);
+      }
+
+    });
+
+    //
+    _.forEach(mySetA,function(e) {
+      console.log("" + e.toString());
+    });
+    _.forEach(mySetB,function(e) {
+      console.log("" + e.toString());
     });
 
     // 第三回層だけ抽出
@@ -127,8 +148,60 @@ export class AppComponent {
     var lev3List = _.differenceBy(labelArr2,[{"lev3":"0"}],"lev3");
     _.forEach(lev3List, function(e) {
       totalIndex2++;
-      console.log("" + totalIndex2 + "|" + e.labelName + ":" + e.totalOrder);
+      console.log("" + totalIndex2 + "|" + e.labelName + ":" + e.labelCode);
+    });
 
+    // 第四回層だけ抽出
+    totalIndex2 = 0;
+    var lev4List = _.differenceBy(labelArr2,[{"lev4":"0"}],"lev4");
+    _.forEach(lev4List, function(e4) {
+      totalIndex2++;
+      console.log("" + totalIndex2 + "|" + e4.labelName + ":" + e4.labelCode);
+    });
+
+    // 第五回層だけ抽出
+    totalIndex2 = 0;
+    var lev5List = _.differenceBy(labelArr2,[{"lev5":"0"}],"lev5");
+    _.forEach(lev5List, function(e5) {
+      totalIndex2++;
+      console.log("" + totalIndex2 + "|" + e5.labelName + ":" + e5.labelCode);
+    });
+
+    console.log("--------------------");
+    // カウンターの初期化
+    totalIndex2 = 0;
+    // 第一階層
+    _.forEach(lev1List, function(e) {
+      totalIndex2++;
+      console.log("" + totalIndex2 + "|" + e.labelName + ":" + e.labelCode);
+      // 第二階層
+      _.forEach(lev2List2, function(e2) {
+        if(e2.parentLabelCode === e.labelCode){
+          totalIndex2++;
+          console.log("" + totalIndex2 + "| " + e2.labelName + ":" + e2.labelCode);
+          // 第三階層
+          _.forEach(lev3List, function(e3) {
+            if(e3.parentLabelCode === e2.labelCode){
+              totalIndex2++;
+              console.log("" + totalIndex2 + "|  " + e3.labelName + ":" + e3.labelCode);
+              // 第四階層
+              _.forEach(lev4List, function(e4) {
+                if(e4.parentLabelCode === e3.labelCode){
+                  totalIndex2++;
+                  console.log("" + totalIndex2 + "|   " + e4.labelName + ":" + e4.labelCode);
+                  // 第五階層
+                  _.forEach(lev5List, function(e5) {
+                    if(e5.parentLabelCode === e4.labelCode){
+                      totalIndex2++;
+                      console.log("" + totalIndex2 + "|    " + e5.labelName + ":" + e5.labelCode);
+                    }
+                  });
+                }
+              });
+            }
+          });
+        }
+     });
     });
 
   }
