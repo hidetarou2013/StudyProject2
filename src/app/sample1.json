@@ -1,10 +1,10 @@
 [
-        {"parentLabelCode": "00000000","labelCode": "00000001","labelName": "A","totalOrder": "1","lev1": "1","lev2": "0","lev3": "0","lev4": "0","lev5": "0"}
-       ,{"parentLabelCode": "00000001","labelCode": "00000002","labelName": "A-1","totalOrder": "2","lev1": "0","lev2": "1","lev3": "0","lev4": "0","lev5": "0"}
-       ,{"parentLabelCode": "00000001","labelCode": "00000003","labelName": "A-2","totalOrder": "3","lev1": "0","lev2": "2","lev3": "0","lev4": "0","lev5": "0"}
-       ,{"parentLabelCode": "00000000","labelCode": "00000004","labelName": "B","totalOrder": "4","lev1": "2","lev2": "0","lev3": "0","lev4": "0","lev5": "0"}
-       ,{"parentLabelCode": "00000004","labelCode": "00000005","labelName": "B-1","totalOrder": "5","lev1": "0","lev2": "1","lev3": "0","lev4": "0","lev5": "0"}
-       ,{"parentLabelCode": "00000004","labelCode": "00000006","labelName": "B-2","totalOrder": "6","lev1": "0","lev2": "2","lev3": "0","lev4": "0","lev5": "0"}
-       ,{"parentLabelCode": "00000006","labelCode": "00000007","labelName": "B-2-1","totalOrder": "7","lev1": "0","lev2": "0","lev3": "1","lev4": "0","lev5": "0"}
-       ,{"parentLabelCode": "00000000","labelCode": "00000008","labelName": "C","totalOrder": "8","lev1": "3","lev2": "0","lev3": "0","lev4": "0","lev5": "0"}
-       ]
+        {"companyCode": "AABBCC0000000001","parentLabelCode": "0000","labelCode": "0001","labelName": "A","labelDisplayOrder": "1","level1": "1","level2": "0","level3": "0","level4": "0","level5": "0","analizeFlag": "0","color": "#FF0000","logicalDeleteDiv": "0"}
+       ,{"companyCode": "AABBCC0000000001","parentLabelCode": "0001","labelCode": "0002","labelName": "A-1","labelDisplayOrder": "2","level1": "0","level2": "1","level3": "0","level4": "0","level5": "0","analizeFlag": "0","color": "#FF0000","logicalDeleteDiv": "0"}
+       ,{"companyCode": "AABBCC0000000001","parentLabelCode": "0001","labelCode": "0003","labelName": "A-2","labelDisplayOrder": "3","level1": "0","level2": "2","level3": "0","level4": "0","level5": "0","analizeFlag": "0","color": "#FF0000","logicalDeleteDiv": "0"}
+       ,{"companyCode": "AABBCC0000000001","parentLabelCode": "0000","labelCode": "0004","labelName": "B","labelDisplayOrder": "4","level1": "2","level2": "0","level3": "0","level4": "0","level5": "0","analizeFlag": "0","color": "#00FF00","logicalDeleteDiv": "0"}
+       ,{"companyCode": "AABBCC0000000001","parentLabelCode": "0004","labelCode": "0005","labelName": "B-1","labelDisplayOrder": "5","level1": "0","level2": "1","level3": "0","level4": "0","level5": "0","analizeFlag": "0","color": "#FF0000","logicalDeleteDiv": "0"}
+       ,{"companyCode": "AABBCC0000000001","parentLabelCode": "0004","labelCode": "0006","labelName": "B-2","labelDisplayOrder": "6","level1": "0","level2": "2","level3": "0","level4": "0","level5": "0","analizeFlag": "0","color": "#FF0000","logicalDeleteDiv": "0"}
+       ,{"companyCode": "AABBCC0000000001","parentLabelCode": "0006","labelCode": "0007","labelName": "B-2-1","labelDisplayOrder": "7","level1": "0","level2": "0","level3": "1","level4": "0","level5": "0","analizeFlag": "0","color": "#FF0000","logicalDeleteDiv": "0"}
+       ,{"companyCode": "AABBCC0000000001","parentLabelCode": "0000","labelCode": "0008","labelName": "C","labelDisplayOrder": "8","level1": "3","level2": "0","level3": "0","level4": "0","level5": "0","analizeFlag": "0","color": "#0000FF","logicalDeleteDiv": "0"}
+]
